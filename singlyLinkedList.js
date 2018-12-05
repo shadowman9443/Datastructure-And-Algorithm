@@ -99,13 +99,14 @@ class SinglyLinkedList {
     }
     insert(index, value){
         if(value == null || value == undefined) return undefined;
-        let desiredPosNode= this.get(index);
+        if(index === this.length) return this.push(value);
+        if (index === 0) return this.unshift(value);
         let newNode = new Node(value);
-        
-        newNode.next = desiredPosNode;
-        desiredPosNode = newNode;
+        let prevNode= this.get(index-1);
+        let tempNode = prevNode.next;
+        prevNode.next = newNode;
+        newNode.next = tempNode;
         this.length++;
-    
         return this;
     }
 }
@@ -113,5 +114,6 @@ let list = new SinglyLinkedList();
 list.push('montu');
 list.push('jontu');
 list.push('kontu');
-
-console.log(list.insert(0,'lonu'));
+list.push('shontu');
+list.push('bolu');
+console.log(list.insert(2,'lonu'));
