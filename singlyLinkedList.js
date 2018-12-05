@@ -99,19 +99,46 @@ class SinglyLinkedList {
     }
     insert(index, value){
         if(value == null || value == undefined) return undefined;
-        let desiredPosNode= this.get(index);
+        if(index === this.length) return this.push(value);
+        if (index === 0) return this.unshift(value);
         let newNode = new Node(value);
-        
-        newNode.next = desiredPosNode;
-        desiredPosNode = newNode;
+        let prevNode= this.get(index-1);
+        let tempNode = prevNode.next;
+        prevNode.next = newNode;
+        newNode.next = tempNode;
         this.length++;
-    
         return this;
+    }
+    remove(index){
+         if (index < 0 || index >= this.length) return undefined;
+         if (index === this.length-1) return this.pop();
+         if (index === 0) return this.shift();
+    
+         let prevNode = this.get(index - 1);
+         let nextNode = this.get(index + 1);
+         prevNode.next = nextNode;
+         this.length--;
+         return this;
+    }
+    reverse() {
+       let prev = null;
+       let cur = this.head;
+       let next =null;
+       while(cur !== null){
+           next = cur.next;
+           cur.next = prev;
+           prev = cur;
+           cur = next;
+
+       }
+       this.head = prev;
+       return this;
     }
 }
 let list = new SinglyLinkedList();
 list.push('montu');
 list.push('jontu');
 list.push('kontu');
-
-console.log(list.insert(0,'lonu'));
+list.push('shontu');
+list.push('bolu');
+console.log(list.reverse());
