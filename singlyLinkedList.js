@@ -109,6 +109,31 @@ class SinglyLinkedList {
         this.length++;
         return this;
     }
+    remove(index){
+         if (index < 0 || index >= this.length) return undefined;
+         if (index === this.length-1) return this.pop();
+         if (index === 0) return this.shift();
+    
+         let prevNode = this.get(index - 1);
+         let nextNode = this.get(index + 1);
+         prevNode.next = nextNode;
+         this.length--;
+         return this;
+    }
+    reverse() {
+       let prev = null;
+       let cur = this.head;
+       let next =null;
+       while(cur !== null){
+           next = cur.next;
+           cur.next = prev;
+           prev = cur;
+           cur = next;
+
+       }
+       this.head = prev;
+       return this;
+    }
 }
 let list = new SinglyLinkedList();
 list.push('montu');
@@ -116,4 +141,4 @@ list.push('jontu');
 list.push('kontu');
 list.push('shontu');
 list.push('bolu');
-console.log(list.insert(2,'lonu'));
+console.log(list.reverse());
