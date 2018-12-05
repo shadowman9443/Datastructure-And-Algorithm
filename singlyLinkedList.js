@@ -64,26 +64,48 @@ class SinglyLinkedList {
             this.head = newNode;
             this.tail = this.head
         } else {
-            console.log("hi");
-            let currentHead = this.head;
-            console.log("cur");
-            console.log(currentHead);
+           
             
+            newNode.next = this.head;
             this.head = newNode;
-            console.log("new head");
-            console.log(this.head);
-            console.log(this.head.next);
-            this.head.next = currentHead;
-            console.log("new tail");
-            console.log(this.head.next);
-            console.log(this.head);
-            console.log("after that");
-            console.log(this);
-            
+          
             
         }
         this.length++;
       //  console.log(this);
+        return this;
+    }
+
+    get(index){
+        if(index <0 || index>= this.length) return undefined;
+        let count = 0;
+        
+        let desired=this.head;
+        while(count <= index){
+            desired=desired.next;
+            count++;
+        }
+        return desired;
+    }
+
+    set(index, value){
+       if(value == null || value == undefined) return undefined;
+       let desired = this.get(index);
+       if(desired){
+         desired.value = value;
+         return false ;
+       }
+       return false ;
+    }
+    insert(index, value){
+        if(value == null || value == undefined) return undefined;
+        let desiredPosNode= this.get(index);
+        let newNode = new Node(value);
+        
+        newNode.next = desiredPosNode;
+        desiredPosNode = newNode;
+        this.length++;
+    
         return this;
     }
 }
@@ -91,5 +113,5 @@ let list = new SinglyLinkedList();
 list.push('montu');
 list.push('jontu');
 list.push('kontu');
-list.unshift('kola');
-//console.log(list);
+
+console.log(list.insert(0,'lonu'));
