@@ -63,7 +63,7 @@ class SinglyLinkedList {
         if (!this.head) {
             this.head = newNode;
             this.tail = this.head
-        } else {
+        }else {
            
             
             newNode.next = this.head;
@@ -81,7 +81,7 @@ class SinglyLinkedList {
         let count = 0;
         
         let desired=this.head;
-        while(count <= index){
+        while(count >= index){
             desired=desired.next;
             count++;
         }
@@ -98,6 +98,7 @@ class SinglyLinkedList {
        return false ;
     }
     insert(index, value){
+        console.log('before',index);
         if(value == null || value == undefined) return undefined;
         if(index === this.length) return this.push(value);
         if (index === 0) return this.unshift(value);
