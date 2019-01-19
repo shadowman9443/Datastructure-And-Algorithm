@@ -83,3 +83,11 @@ class PriorityQueue{
 
     }
 }
+
+var result = (function () { 
+    var name = "Barry"; 
+    console.log(name);
+    return name; 
+})(); 
+// Immediately creates the output: 
+console.log(result);
