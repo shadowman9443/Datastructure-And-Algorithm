@@ -45,3 +45,17 @@ class HashTable{
         return valuesArr;
     }
 }
+
+const mul = (x) => {
+    console.log('x',x);
+    return (y) => {
+        console.log(y);
+        return (z) => {
+            console.log(z);
+            return x * y * z;
+        };
+    };
+};
+let result = mul(3)(3)(3);
+const mul = ( a, b, c ) => a * b * c;
+let _mul = curry(mul);
