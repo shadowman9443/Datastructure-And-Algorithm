@@ -55,10 +55,28 @@ class Graph{
             result.push(currentVertext);
             this.adjaccencyList[currentVertext].forEach(neighbour => {
                 if(!visited[neighbour]){
-                    stack.push(start);
+                    visited[neighbour] =true;
+                    stack.push(neighbour);
                 }
             });
         }
         return result; 
+    }
+    breathFirst(start){
+        const queue = [start];
+        const result = [];
+        const visited = {};
+        visited[start] = true;
+        let currentVertext ;
+        while(queue.length){
+            currentVertext =queue.shift();
+            result.push(currentVertext);
+            this.adjaccencyList[currentVertext].forEach(neighbour => {
+                if(!visited[neighbour]){
+                    visited[neighbour] =true;
+                    queue.push(neighbour);
+                }
+            });
+        }
     }
 }
