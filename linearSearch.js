@@ -8,3 +8,7 @@ function linearSearch(arr,num){
     }
     return -1 ;
 }
+
+var missingNumber = function (nums) {
+
+};

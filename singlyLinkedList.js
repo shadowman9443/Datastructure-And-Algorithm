@@ -135,6 +135,23 @@ class SinglyLinkedList {
        this.head = prev;
        return this;
     }
+    travers() {
+        let prev = null;
+        let current = this.head;
+        let next = null;
+        while (current != null && current.next != null) {
+            if (current.next.value == current.value) {
+                current.next = current.next.next;
+            } else {
+                current = current.next;
+            }
+           
+          
+
+        }
+       
+        return this;
+    }
 }
 let list = new SinglyLinkedList();
 list.push('montu');
@@ -142,4 +159,5 @@ list.push('jontu');
 list.push('kontu');
 list.push('shontu');
 list.push('bolu');
-console.log(list.reverse());
+list.push('bolu');
+console.log(list.travers());
